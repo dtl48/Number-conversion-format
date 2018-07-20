@@ -1,0 +1,41 @@
+echo 0xFFFe EXPECTED
+python calc.py + b0111111111111111 b0111111111111111 x
+echo o151 EXPECTED
+python calc.py + d5 d100 o
+echo 001101001 EXPECTED
+python calc.py + d5 d100 b
+echo o62 EXPECTED
+python calc.py - d100 d50 o
+echo x6 EXPECTED
+python calc.py - o010 b010 x
+echo b110010 EXPECTED
+python calc.py - d100 d50 b
+
+
+
+python calc.py + b0111111111111111 b0111111111111111 d
+echo 105 EXPECTED
+python calc.py + d5 d100 d
+echo 20 EXPECTED
+python calc.py - d100 x50 d
+
+echo "Running multiply expect 5000"
+python calc.py "m" d100 d50 d
+echo "Running multiply expect 11610"
+python calc.py "m" d100 d50 o
+echo "Running multiply expct 1388"
+python calc.py "m" d100 d50 x
+echo "Running multiply expect 0001001110001000"
+python calc.py "m" d100 d50 b
+
+
+echo "Running format expect 464367618"
+python format.py 00011011101011011011000000000010 int
+echo "Running format expect -464367618"
+python format.py 11100100010100100100111111111110 int
+echo "Running format expect 148292"
+python format.py 00000000000000100100001101000100 int
+echo "Running format expect -2147483648"
+python format.py 10000000000000000000000000000000 int
+echo "Running format expect -1"
+python format.py 11111111111111111111111111111111 int
